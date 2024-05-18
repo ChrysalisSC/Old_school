@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Poro Coins clicker</title>
+		<link rel="stylesheet" href="{{
+		 url_for('static', filename = 'css/main.css')}}">
+	</head>
+	<body>
+		<div class= "container">
+			<div class = "backgroundporo"> 
+				<img src ="{{url_for('static', filename='imgs/PoroCoin.png')}}" class ="porocoin" onclick = "counter()">
+				<h1>PoroCoins: <span id = "coins">0</span> </h1>
+				</div>
+			
+			<div style ="background-color:#795c32;">  
+				<div class ="shop" style ="background-color:#352315;">
+			
+
+					<p> SHOP </p>
+
+
+					
+
+
+					<!----Working version here -->
+
+
+					<div class="Buildings" style ="background: blue" >
+						<img src ="{{url_for('static', filename='imgs/poro.jpeg')}}" class ="poroImage" onclick = "porogather()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">POROS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "poroscost">10</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "poros">0</span></p>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="Buildings" >
+						<img src ="{{url_for('static', filename='imgs/scavs.jpeg')}}" class ="nasusImage" onclick = "shop2()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">YORDLE SCAVENGERS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "scavcost">100</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "scavs">0</span></p>
+							</div>
+						</div>
+					</div>
+					
+
+
+					<div class="Buildings">
+						<img src ="{{url_for('static', filename='imgs/sivir.jpeg')}}" class ="sivirImage" onclick = "Shop3()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">SHURIMA LOOTERS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "poroscost">500</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "poros">0</span></p>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="Buildings"  >
+						<img src ="{{url_for('static', filename='imgs/test.jpeg')}}" class ="shopImage" onclick = "shop4()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">SHOP KEEPERS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "poroscost">10000</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "poros">0</span></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="Buildings"  >
+						<img src ="{{url_for('static', filename='imgs/chem.jpeg')}}" class ="nasusImage" onclick = "shop5()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">CHEM BARONS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "poroscost">1000000</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "poros">0</span></p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="Buildings"  >
+						<img src ="{{url_for('static', filename='imgs/Sol.jpeg')}}" class ="nasusImage" onclick = "shop6()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">COIN FORGERS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "poroscost">10000000</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "poros">0</span></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="Buildings"  >
+						<img src ="{{url_for('static', filename='imgs/mort2.jpeg')}}" class ="mortImage" onclick = "shop7()">
+						<div class= "grid">
+							<div class = "BuildingText">
+								<p class ="buytext">MORTDOGS</p>
+								<p class = "costtext">PRICE: <span class = "costspan" id = "poroscost">100</span></p>
+								
+							</div>
+							<div>
+								<p> <span class = "buyspan" id = "poros">0</span></p>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+
+		
+	</body>
+
+
+	<script>
+
+		
+		var autoclicks = 0;
+		var cookies = 0;
+		var clicks = 0;
+		var porogathers = 0;
+		var scav  = 0;
+
+		function update(){
+			coins.innerHTML = cookies;
+		}
+
+		
+		function counter(){
+			clicks = clicks +1;
+			cookies = cookies + 1;
+			update();
+			
+		}
+		function timer(){
+			cookies = cookies + autoclicks;
+			update();
+
+		}
+		
+		function porogather(){
+			
+			if(cookies >= Math.round((10)* Math.pow(1.15,porogathers+1))){
+				cookies = cookies - Math.round((10)* Math.pow(1.15,porogathers+1));
+				porogathers = porogathers + 1;
+				autoclicks = autoclicks +1 ;
+				poros.innerHTML = porogathers;
+				poroscost.innerHTML = Math.round((10)* Math.pow(1.15,porogathers+1));
+				update()
+			}
+			
+		}
+		
+
+		function shop2(){
+			
+			if(cookies >= Math.round((100)* Math.pow(1.15,scav+1))){
+				cookies = cookies - Math.round((100)* Math.pow(1.15,scav+1));
+				scav = scav + 1;
+				autoclicks = autoclicks +10 ;
+				scavs.innerHTML = scav;
+				scavcost.innerHTML = Math.round((100)* Math.pow(1.15,scav+1));
+				update()
+			}
+			
+		}
+		/*
+		function shop3(){
+			
+			if(cookies >= Math.round((500)* Math.pow(1.15,porogathers+1))){
+				cookies = cookies - Math.round((10)* Math.pow(1.15,porogathers+1));
+				porogathers = porogathers + 1;
+				autoclicks = autoclicks +1 ;
+				poros.innerHTML = porogathers;
+				poroscost.innerHTML = Math.round((10)* Math.pow(1.15,porogathers+1));
+			}
+		function shop4(){
+			
+			if(cookies >= Math.round((10000)* Math.pow(1.15,porogathers+1))){
+				cookies = cookies - Math.round((10)* Math.pow(1.15,porogathers+1));
+				porogathers = porogathers + 1;
+				autoclicks = autoclicks +1 ;
+				por.innerHTML = porogathers;
+				poroscost.innerHTML = Math.round((10)* Math.pow(1.15,porogathers+1));
+			}
+		function shop5(){
+			
+			if(cookies >= Math.round((1000000)* Math.pow(1.15,porogathers+1))){
+				cookies = cookies - Math.round((10)* Math.pow(1.15,porogathers+1));
+				porogathers = porogathers + 1;
+				autoclicks = autoclicks +1 ;
+				poros.innerHTML = porogathers;
+				poroscost.innerHTML = Math.round((10)* Math.pow(1.15,porogathers+1));
+			}
+		function shop6(){
+			
+			if(cookies >= Math.round((10)* Math.pow(1.15,porogathers+1))){
+				cookies = cookies - Math.round((10)* Math.pow(1.15,porogathers+1));
+				porogathers = porogathers + 1;
+				autoclicks = autoclicks +1 ;
+				poros.innerHTML = porogathers;
+				poroscost.innerHTML = Math.round((10)* Math.pow(1.15,porogathers+1));
+			}
+		function shop7{
+			
+			if(cookies >= Math.round((10)* Math.pow(1.15,porogathers+1))){
+				cookies = cookies - Math.round((10)* Math.pow(1.15,porogathers+1));
+				porogathers = porogathers + 1;
+				autoclicks = autoclicks +1 ;
+				poros.innerHTML = porogathers;
+				poroscost.innerHTML = Math.round((10)* Math.pow(1.15,porogathers+1));
+			}
+			*/
+
+		
+		//The 1000 per 1s
+		setInterval(timer,1000)
+	</script>
+
+	
+</html>
